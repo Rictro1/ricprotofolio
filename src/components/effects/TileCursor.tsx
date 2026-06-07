@@ -67,7 +67,7 @@ export default function TileCursor() {
           opacity:0;
           transform:perspective(400px) translateZ(0px) rotateX(0deg) rotateY(0deg);
         `;
-        canvas.appendChild(el);
+        canvas!.appendChild(el);
         tiles.set(k, { el, lastActive: 0, active: false });
       }
       return tiles.get(k)!;
