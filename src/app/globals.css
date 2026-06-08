@@ -23,6 +23,25 @@ body {
     color: #111;
 }
 
+/* Show normal cursor on touch devices */
+@media (pointer: coarse) {
+    body {
+        cursor: auto !important;
+    }
+
+    .custom-cursor {
+        display: none !important;
+    }
+
+    .hoverable,
+    .btn-primary,
+    .btn-outline,
+    button,
+    a {
+        cursor: pointer !important;
+    }
+}
+
 /* Animation Classes */
 .reveal {
     opacity: 0;
@@ -106,6 +125,7 @@ body {
 .hero-wrap {
     width: 100vw;
     height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height for mobile browsers */
     position: relative;
     overflow: hidden;
     background: #eeebe6;
@@ -186,7 +206,6 @@ body {
 }
 
 .nav-links-hero {
-    display: flex;
     gap: 32px
 }
 
@@ -255,6 +274,7 @@ body {
 .btn-primary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 14px 28px;
     border-radius: 999px;
@@ -267,6 +287,7 @@ body {
     cursor: none;
     letter-spacing: -.01em;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -277,6 +298,7 @@ body {
 .btn-outline {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 13px 28px;
     border-radius: 999px;
@@ -289,6 +311,7 @@ body {
     cursor: none;
     letter-spacing: -.01em;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
 }
 
 .btn-outline:hover {
@@ -395,6 +418,8 @@ body {
     }
 }
 
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
 @media (max-width: 1024px) {
 
     .content,
@@ -415,7 +440,76 @@ body {
     }
 
     .headline {
-        font-size: clamp(48px, 12vw, 80px);
+        font-size: clamp(40px, 12vw, 80px);
+    }
+
+    .subtitle {
+        font-size: clamp(18px, 5vw, 28px);
+    }
+
+    .body-txt {
+        font-size: clamp(14px, 3.5vw, 18px);
+    }
+
+    .badge {
+        font-size: 11px;
+        padding: 6px 12px;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        width: 40px;
+        margin: 20px 0;
+    }
+
+    .nav-hero {
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .content {
+        padding: 16px 20px;
+        justify-content: flex-end;
+        padding-bottom: 80px;
+    }
+
+    .headline {
+        font-size: clamp(36px, 11vw, 56px);
+    }
+
+    .subtitle {
+        font-size: clamp(16px, 4.5vw, 24px);
+    }
+
+    .body-txt {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 5px 10px;
+        gap: 6px;
+    }
+
+    .badge-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .divider {
+        width: 32px;
+        height: 2px;
+        margin: 16px 0;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        padding: 12px 24px;
+        font-size: 14px;
+        width: 100%;
     }
 }
 

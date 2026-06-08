@@ -17,7 +17,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-[960px] h-[600px] bg-surface-bright rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal-enter"
+        className="relative w-full max-w-[960px] max-h-[90vh] bg-surface-bright rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
         style={{ cursor: 'auto' }}
       >
@@ -31,7 +31,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </button>
 
         {/* Left: Project Image */}
-        <div className="md:w-1/2 h-[240px] md:h-full flex-shrink-0 bg-surface-container-highest flex items-center justify-center">
+        <div className="w-full md:w-1/2 h-[200px] sm:h-[240px] md:h-auto flex-shrink-0 bg-surface-container-highest flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt={project.imageAlt}
@@ -41,20 +41,20 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         {/* Right: Details */}
-        <div className="md:w-1/2 p-8 md:p-10 flex flex-col overflow-y-auto min-h-0">
-          <div className="flex flex-wrap gap-2 mb-6">
+        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col overflow-y-auto min-h-0">
+          <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
             {project.tags.map(tag => (
               <span key={tag} className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest bg-surface-container-low px-3 py-1 rounded-full">{tag}</span>
             ))}
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-extrabold text-on-surface leading-tight tracking-tight mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-on-surface leading-tight tracking-tight mb-4">
             {project.title}
           </h3>
 
-          <div className="w-12 h-[3px] bg-on-surface rounded-full mb-6 flex-shrink-0" />
+          <div className="w-12 h-[3px] bg-on-surface rounded-full mb-4 md:mb-6 flex-shrink-0" />
 
-          <p className="text-on-surface-variant leading-relaxed mb-8">
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-6 md:mb-8">
             {project.description}
           </p>
 
@@ -79,26 +79,26 @@ export default function Projects() {
 
   return (
     <>
-      <ScrollReveal as="section" className="py-32 px-6 md:px-16 bg-surface border-t border-black/5" id="projects">
+      <ScrollReveal as="section" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-16 bg-surface border-t border-black/5" id="projects">
         <div className="max-w-[1400px] mx-auto">
-          <div className="relative grid grid-cols-12 gap-8 mb-32">
+          <div className="relative grid grid-cols-12 gap-4 sm:gap-8 mb-16 sm:mb-24 md:mb-32">
             <div className="absolute -left-12 top-0 hidden lg:block h-full stagger-item stagger-delay-1">
               <span className="sticky top-32 text-[120px] font-extrabold text-on-surface-variant/5 tracking-tighter leading-none uppercase [writing-mode:vertical-rl] rotate-180">Portfolio</span>
             </div>
             <div className="col-span-12 lg:col-span-8 lg:col-start-3">
-              <h2 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-on-surface leading-[0.85] tracking-tighter mb-12 stagger-item stagger-delay-2">
+              <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold text-on-surface leading-[0.85] tracking-tighter mb-6 sm:mb-8 md:mb-12 stagger-item stagger-delay-2">
                 Selected<br /><span className="text-on-surface-variant/20">Projects.</span>
               </h2>
-              <div className="max-w-xl ml-auto border-l-4 border-primary pl-8 stagger-item stagger-delay-3">
+              <div className="max-w-xl ml-0 sm:ml-auto border-l-4 border-primary pl-6 sm:pl-8 stagger-item stagger-delay-3">
                 <p className="text-body-lg text-on-surface-variant leading-relaxed italic">A collection of digital products focused on solving complex problems through elegant design and robust engineering.</p>
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-12 gap-y-32 lg:gap-y-48">
+          <div className="grid grid-cols-12 gap-y-16 sm:gap-y-24 md:gap-y-32 lg:gap-y-48">
             {projects.map((project, i) => {
               const isRight = project.alignment === 'right';
               return (
-                <div key={project.id} className={`col-span-12 ${isRight ? 'lg:col-span-10 lg:col-start-3' : 'lg:col-span-10'} group flex flex-col ${isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-start gap-12 stagger-item stagger-delay-${i+1}`}>
+                <div key={project.id} className={`col-span-12 ${isRight ? 'lg:col-span-10 lg:col-start-3' : 'lg:col-span-10'} group flex flex-col ${isRight ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-start gap-6 sm:gap-8 md:gap-12 stagger-item stagger-delay-${i+1}`}>
                   <div className="w-full lg:w-2/3 relative">
                     <div className="aspect-[16/10] overflow-hidden bg-surface-container-highest rounded-2xl border border-black/5 transition-all duration-700 group-hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] hoverable">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -109,10 +109,16 @@ export default function Projects() {
                         <span key={tag} className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">{tag}</span>
                       ))}
                     </div>
+                    {/* Mobile tags - shown below image on small screens */}
+                    <div className="flex lg:hidden flex-wrap gap-2 mt-3">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest bg-surface-container-low px-3 py-1 rounded-full">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <div className={`w-full lg:w-1/3 pt-8 lg:pt-24 space-y-6${isRight ? ' lg:text-right lg:items-end flex flex-col' : ''}`}>
-                    <h4 className="text-4xl font-bold text-on-surface tracking-tight">{project.title}</h4>
-                    <p className="text-lg text-on-surface-variant leading-relaxed">{project.description}</p>
+                  <div className={`w-full lg:w-1/3 pt-2 sm:pt-4 lg:pt-24 space-y-4 sm:space-y-6${isRight ? ' lg:text-right lg:items-end flex flex-col' : ''}`}>
+                    <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-on-surface tracking-tight">{project.title}</h4>
+                    <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">{project.description}</p>
                     <button
                       onClick={() => setSelectedProject(project)}
                       className="inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-4 transition-all hoverable bg-transparent border-none p-0"

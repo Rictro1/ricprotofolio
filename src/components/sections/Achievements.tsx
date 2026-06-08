@@ -17,7 +17,7 @@ function CertificateModal({ achievement, onClose }: { achievement: Achievement; 
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-[960px] h-[600px] bg-surface-bright rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal-enter"
+        className="relative w-full max-w-[960px] max-h-[90vh] bg-surface-bright rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
         style={{ cursor: 'auto' }}
       >
@@ -31,7 +31,7 @@ function CertificateModal({ achievement, onClose }: { achievement: Achievement; 
         </button>
 
         {/* Left: Certificate Image */}
-        <div className="md:w-1/2 h-[240px] md:h-full flex-shrink-0 bg-surface-container-highest flex items-center justify-center">
+        <div className="w-full md:w-1/2 h-[200px] sm:h-[240px] md:h-auto flex-shrink-0 bg-surface-container-highest flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt={achievement.imageAlt}
@@ -41,21 +41,21 @@ function CertificateModal({ achievement, onClose }: { achievement: Achievement; 
         </div>
 
         {/* Right: Details */}
-        <div className="md:w-1/2 p-8 md:p-10 flex flex-col overflow-y-auto min-h-0">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="material-symbols-outlined text-primary text-3xl">{achievement.icon}</span>
+        <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col overflow-y-auto min-h-0">
+          <div className="flex items-center gap-3 mb-4 md:mb-6">
+            <span className="material-symbols-outlined text-primary text-2xl md:text-3xl">{achievement.icon}</span>
             <span className="text-xs font-bold text-on-surface-variant/60 uppercase tracking-widest">{achievement.date}</span>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-extrabold text-on-surface leading-tight tracking-tight mb-3">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-on-surface leading-tight tracking-tight mb-3">
             {achievement.title}
           </h3>
 
-          <p className="text-sm font-semibold text-on-surface-variant mb-6">{achievement.issuer}</p>
+          <p className="text-sm font-semibold text-on-surface-variant mb-4 md:mb-6">{achievement.issuer}</p>
 
-          <div className="w-12 h-[3px] bg-on-surface rounded-full mb-6 flex-shrink-0" />
+          <div className="w-12 h-[3px] bg-on-surface rounded-full mb-4 md:mb-6 flex-shrink-0" />
 
-          <p className="text-on-surface-variant leading-relaxed mb-8">
+          <p className="text-sm md:text-base text-on-surface-variant leading-relaxed mb-6 md:mb-8">
             {achievement.description}
           </p>
 
@@ -109,12 +109,12 @@ export default function Achievements() {
 
   return (
     <>
-      <ScrollReveal as="section" className="py-32 px-6 md:px-16 bg-surface-container-low border-t border-black/5" id="achievements">
+      <ScrollReveal as="section" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-16 bg-surface-container-low border-t border-black/5" id="achievements">
         <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-12 gap-8 mb-24">
+          <div className="grid grid-cols-12 gap-4 sm:gap-8 mb-12 sm:mb-16 md:mb-24">
             <div className="col-span-12 lg:col-span-7">
               <span className="text-primary font-bold text-sm tracking-widest uppercase mb-4 block stagger-item stagger-delay-1">Recognition</span>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-on-surface leading-[0.95] tracking-tighter mb-8 stagger-item stagger-delay-2">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-on-surface leading-[0.95] tracking-tighter mb-4 sm:mb-8 stagger-item stagger-delay-2">
                 Achievements &amp; <span className="text-on-surface-variant/40">Certifications</span>.
               </h2>
             </div>
@@ -125,20 +125,20 @@ export default function Achievements() {
 
           {/* Cards with navigation buttons */}
           <div className="relative">
-            {/* Left scroll button */}
+            {/* Left scroll button - hidden on mobile (swipe instead) */}
             <button
               onClick={() => scroll('left')}
-              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-surface-bright border border-black/10 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 hoverable ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-surface-bright border border-black/10 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 hoverable ${canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
               style={{ cursor: 'none' }}
               aria-label="Scroll left"
             >
               <span className="material-symbols-outlined text-on-surface">chevron_left</span>
             </button>
 
-            {/* Right scroll button */}
+            {/* Right scroll button - hidden on mobile */}
             <button
               onClick={() => scroll('right')}
-              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-surface-bright border border-black/10 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 hoverable ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 hidden sm:flex items-center justify-center rounded-full bg-surface-bright border border-black/10 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 hoverable ${canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
               style={{ cursor: 'none' }}
               aria-label="Scroll right"
             >
@@ -146,22 +146,22 @@ export default function Achievements() {
             </button>
 
             {/* Scrollable cards */}
-            <div ref={scrollRef} className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:-mx-0 md:px-0">
+            <div ref={scrollRef} className="flex gap-4 sm:gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 sm:-mx-0 sm:px-0">
               {achievements.map((a, i) => (
                 <div
                   key={a.id}
-                  className={`group relative bg-surface-bright border border-black/5 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] hover:translate-y-[-8px] hoverable stagger-item stagger-delay-${i + 1} snap-start flex-shrink-0 w-[340px] md:w-[400px] flex flex-col`}
+                  className={`group relative bg-surface-bright border border-black/5 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] hover:translate-y-[-8px] hoverable stagger-item stagger-delay-${i + 1} snap-start flex-shrink-0 w-[280px] sm:w-[340px] md:w-[400px] flex flex-col`}
                 >
                   <div className="aspect-[16/10] overflow-hidden bg-surface-container-highest">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img alt={a.imageAlt} className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition-transform duration-700" src={a.image} />
                   </div>
-                  <div className="p-8 flex flex-col flex-1">
+                  <div className="p-5 sm:p-6 md:p-8 flex flex-col flex-1">
                     <div className="flex justify-between items-start mb-4">
                       <span className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">{a.date}</span>
                       <span className="material-symbols-outlined text-primary">{a.icon}</span>
                     </div>
-                    <h4 className="text-xl font-bold text-on-surface mb-2">{a.title}</h4>
+                    <h4 className="text-lg sm:text-xl font-bold text-on-surface mb-2">{a.title}</h4>
                     <p className="text-sm text-on-surface-variant mb-6">{a.issuer}</p>
                     <div className="mt-auto">
                       <button

@@ -6,6 +6,11 @@ export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Don't show custom cursor on touch devices
+    if (typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+      return;
+    }
+
     const cursor = cursorRef.current;
     if (!cursor) return;
 
